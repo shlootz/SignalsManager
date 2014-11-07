@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <flex-config xmlns="http://www.adobe.com/2006/flex-config">
-  <output>D:\LABS\___AssetsManager\SignalsManager\.\bin\SignalsManager.swc</output>
+  <output>C:\Users\user 51\Documents\GitHub\SignalsManager\.\bin\SignalsManager.swc</output>
   <use-network>true</use-network>
   <target-player>10.1</target-player>
   <warnings>true</warnings>
@@ -17,7 +17,7 @@
     <use-resource-bundle-metadata>true</use-resource-bundle-metadata>
     <verbose-stacktraces>false</verbose-stacktraces>
     <source-path>
-      <path-element>d:\labs\___assetsmanager\signalsmanager\src</path-element>
+      <path-element>c:\users\user 51\documents\github\signalsmanager\src</path-element>
     </source-path>
   </compiler>
   <include-classes>

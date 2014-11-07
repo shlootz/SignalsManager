@@ -50,12 +50,13 @@ package signals
 		 */
 		public function dispatchSignal(signalName:String, event:String, obj:Object = null):void
 		{
-			trace("Signals :: trying to dispatch " + signalName + " -> dict -> "+_signalsDictionary[signalName]);
+			//trace("Signals :: trying to dispatch " + signalName + " -> dict -> "+_signalsDictionary[signalName]);
 			if (_signalsDictionary[signalName] != null)
 			{
-				try
-				{
+				//try
+				//{
 					var coupleing:SignalCoupleing = _signalsDictionary[signalName];
+					
 					if (obj != null)
 					{
 						coupleing.signal.dispatch(event, obj);
@@ -65,10 +66,14 @@ package signals
 						coupleing.signal.dispatch(event);
 					}
 				}
-				catch (e:Error)
-				{
-					trace("Assets Manager :: Coupleing error :: "+signalName+" :: " + e);
-				}
+				//catch (e:Error)
+				//{
+					//trace("Assets Manager :: Coupleing error :: "+signalName+" :: missing registered signal " + e);
+				//}
+			//}
+			else
+			{
+				trace("Signals :: signal "+signalName+" not registered!")
 			}
 		}
 		
@@ -79,7 +84,7 @@ package signals
 		 */
 		public function addListenerToSignal(signalName:String, eventListener:Function):void
 		{
-			trace("Signals :: trying to add listener "+eventListener+" to signal " + signalName);
+			//trace("Signals :: trying to add listener "+eventListener+" to signal " + signalName);
 			try
 			{
 				var  signalCouple:SignalCoupleing = _signalsDictionary[signalName];

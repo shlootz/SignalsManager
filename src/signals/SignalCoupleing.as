@@ -44,8 +44,24 @@ package signals
 		 */
 		public function addCallBack(callBack:Function):void
 		{
-			_callBacks.push(callBack);
-			_signal.add(callBack);
+			var found:Boolean = false;
+			for (var i:uint = 0; i < _callBacks.length; i++ )
+			{
+				if (_callBacks[i] == callBack)
+				{
+					found = true;
+				}
+			}
+			if (!found)
+			{
+				trace("Signals Manager :: adding new callback")
+				_callBacks.push(callBack);
+				_signal.add(callBack);
+			}
+			else
+			{
+				trace("Signals Manager :: adding new callback FAILED :: callback already existing");
+			}
 		}
 		
 		/**
@@ -58,6 +74,7 @@ package signals
 			{
 				if (_callBacks[i] == listener)
 				{
+					_signal.remove(listener);
 					_callBacks.splice(i,1);
 				}
 			}
