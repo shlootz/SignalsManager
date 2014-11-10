@@ -7,6 +7,7 @@ package signals
 	 */
 	public class SignalCoupleing 
 	{
+		public var _signalName:String;
 		public var _signal:Signal;
 		public var _callBacks:Vector.<Function> = new Vector.<Function>;
 		
@@ -54,13 +55,13 @@ package signals
 			}
 			if (!found)
 			{
-				trace("Signals Manager :: adding new callback")
+				trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback")
 				_callBacks.push(callBack);
 				_signal.add(callBack);
 			}
 			else
 			{
-				trace("Signals Manager :: adding new callback FAILED :: callback already existing");
+				trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback FAILED :: callback already existing");
 			}
 		}
 		

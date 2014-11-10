@@ -28,7 +28,7 @@ package signals
 		public function addSignal(signalName:String, signal:Object, anchorPoints:Vector.<Function> = null):void
 		{
 			var coupleing:SignalCoupleing = new SignalCoupleing();
-			
+			coupleing._signalName = signalName;
 			coupleing.signal = signal as Signal;
 			
 			if (anchorPoints != null)
@@ -92,7 +92,7 @@ package signals
 			}
 			catch (e:Error)
 			{
-				trace("SignalsHub Error :: signal not mapped in dictionary " + e);
+				trace("SignalsHub Error :: signal "+signalName+" not mapped in dictionary " + e);
 			}
 		}
 		
