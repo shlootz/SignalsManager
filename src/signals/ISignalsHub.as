@@ -13,6 +13,8 @@ package signals
 		 function getRegisteredSignals():Dictionary
 		 function removeListenerFromSignal(signalName:String, listener:Function):void
 		 function removeAllListenersFromSignal(signalName:String):void
+		 function get verbose():Boolean 
+		 function set verbose(value:Boolean):void 
 	}
 	
 }

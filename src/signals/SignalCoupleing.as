@@ -55,13 +55,16 @@ package signals
 			}
 			if (!found)
 			{
-				trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback")
+				//trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback")
 				_callBacks.push(callBack);
 				_signal.add(callBack);
 			}
 			else
 			{
-				trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback FAILED :: callback already existing");
+				var err:Error = new Error("Te Drec :: Signals Manager :: Signal Name: " + _signalName+" :: adding new callback FAILED :: callback already existing");
+				trace(err.getStackTrace());
+				throw err;
+				//trace("Signals Manager :: Signal Name: "+_signalName+" :: adding new callback FAILED :: callback already existing");
 			}
 		}
 		

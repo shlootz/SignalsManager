@@ -9,6 +9,7 @@ package signals
 	public class SignalsHub implements ISignalsHub
 	{
 		
+		private var _verbose:Boolean = false;
 		private var _signalsDictionary:Dictionary = new Dictionary(true);
 		
 		/**
@@ -50,7 +51,7 @@ package signals
 		 */
 		public function dispatchSignal(signalName:String, event:String, obj:Object = null):void
 		{
-			//trace("Signals :: trying to dispatch " + signalName + " -> dict -> "+_signalsDictionary[signalName]);
+			if (_verbose) trace("Signals :: trying to dispatch " + signalName + " -> dict -> "+_signalsDictionary[signalName]);
 			if (_signalsDictionary[signalName] != null)
 			{
 				//try
@@ -73,7 +74,10 @@ package signals
 			//}
 			else
 			{
-				trace("Signals :: signal "+signalName+" not registered!")
+				if (_verbose) trace("Signals :: signal "+signalName+" not registered!")
+				var err:Error = new Error("Te Drec :: Signals Manager :: Signal Name: " + signalName+" :: not registered");
+				trace(err.getStackTrace());
+				throw err;
 			}
 		}
 		
@@ -84,7 +88,7 @@ package signals
 		 */
 		public function addListenerToSignal(signalName:String, eventListener:Function):void
 		{
-			//trace("Signals :: trying to add listener "+eventListener+" to signal " + signalName);
+			if (_verbose) trace("Signals :: trying to add listener "+eventListener+" to signal " + signalName);
 			try
 			{
 				var  signalCouple:SignalCoupleing = _signalsDictionary[signalName];
@@ -92,7 +96,10 @@ package signals
 			}
 			catch (e:Error)
 			{
-				trace("SignalsHub Error :: signal "+signalName+" not mapped in dictionary " + e);
+				if (_verbose) trace("SignalsHub Error :: signal " + signalName+" not mapped in dictionary " + e);
+				var err:Error = new Error("Te Drec :: Signals Manager :: Signal Name: " + signalName+" :: not mapped in dictionary ");
+				trace(err.getStackTrace());
+				throw err;
 			}
 		}
 		
@@ -126,6 +133,22 @@ package signals
 		public function getRegisteredSignals():Dictionary
 		{
 			return _signalsDictionary;
+		}
+		
+		/**
+		 * 
+		 */
+		public function get verbose():Boolean 
+		{
+			return _verbose;
+		}
+		
+		/**
+		 * 
+		 */
+		public function set verbose(value:Boolean):void 
+		{
+			_verbose = value;
 		}
 		
 	}
